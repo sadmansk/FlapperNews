@@ -36,7 +36,7 @@ router.param('post', function(req, res, next, id) {
 });
 
 //GET the right post attached to the specified URL
-router.get('posts/:post', function(req, res) {
+router.get('/posts/:post', function(req, res) {
   res.json(req.post);
 });
 
