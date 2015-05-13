@@ -22,7 +22,7 @@ function($stateProvider, $urlRouterProvider) {
 
 app.factory('posts', [function(){
     var o = {
-      posts: [{title: 'name', link: 'link', upvotes: '0', comments: []}]
+      posts: [] 
     };
     return o;
 }]);
@@ -34,7 +34,6 @@ app.controller('MainCtrl', ['$scope', 'posts', function($scope, posts) { $scope.
 	link:$scope.link,
 	upvotes: 0,
 	comments: [
-	  {author: 'Joe', body: 'Cool post!', upvotes: 69}
 	]
       });
       $scope.posts.push($scope.post);
@@ -43,14 +42,14 @@ app.controller('MainCtrl', ['$scope', 'posts', function($scope, posts) { $scope.
     };
 
     $scope.incrementUpvotes = function(post){
-      $scope.post.upvotes += 1;
+      post.upvotes += 1;
     };
 }]);
 
 app.controller('PostsCtrl', ['$scope', '$stateParams', 'posts', function ($scope, $stateParams, posts) {
     $scope.post = posts.posts[$stateParams.id];
-    $scope.incrementUpvotes = function(){
-      $scope.post.upvotes += 1;
+    $scope.incrementUpvotes = function(post){
+      post.upvotes += 1;
     };
 
     $scope.addComment = function() {
